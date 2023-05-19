@@ -1,5 +1,16 @@
 <form class="form-cad">
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="input">
+        <mat-label>Nome Completo</mat-label>
+        <input type="text" matInput [formControl]="nameFormControl" matInput [errorStateMatcher]="matcher"
+            placeholder="Ex. Rhuan da Silva">
+        <mat-error *ngIf="nameFormControl.hasError('minLength') && !nameFormControl.hasError('required')">
+            Por favor, insira no mínimo 10 letras
+        </mat-error>
+        <mat-error *ngIf="nameFormControl.hasError('required')">
+            O Nome é <strong>obrigatório</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field  class="input">
         <mat-label>Email</mat-label>
         <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
             placeholder="Ex. pat@exemplo.com">

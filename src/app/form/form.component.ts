@@ -16,6 +16,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class FormComponent {
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  nameFormControl = new FormControl('', [Validators.required, Validators.minLength(15)])
 
   matcher = new MyErrorStateMatcher();
 }
