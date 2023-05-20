@@ -14,6 +14,10 @@ export class AppComponent {
     {
       label: 'Página de Cadastro',
       path: '/'
+    },
+    {
+      label: "Tabela de pessoas já cadastradas",
+      path: '/table'
     }
   ]
 

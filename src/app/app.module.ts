@@ -13,11 +13,16 @@ import {MatListModule} from '@angular/material/list'
 // import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormComponent } from './form/form.component';
+import { TableComponent } from './table/table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
+    TableComponent,
     // HomeComponent
   ],
   imports: [
@@ -31,8 +36,12 @@ import { FormComponent } from './form/form.component';
     MatIconModule,
     MatListModule,
     MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
-  providers: [],
+  providers: [UsersService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { }import { UsersService } from './table/user.service';
+
