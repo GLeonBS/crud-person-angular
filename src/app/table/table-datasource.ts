@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
+import { UsersService } from './user.service';
 
 // TODO: Replace this with your own data model type
 export interface TableItem {
@@ -10,12 +11,13 @@ export interface TableItem {
   codigo: number;
   sexo: string;
 }
-let sdads = () => {
-  let tabela = { codigo: 0, nome: " ", sexo: " " }
-  return tabela
+function getTable() {
+  
+  let tabel = [{ codigo: 0, nome: " ", sexo: " " }]
+  return tabel
 }
 
-let table: TableItem[] = [sdads]
+let table: TableItem[] = getTable()
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: TableItem[] = table
 // [

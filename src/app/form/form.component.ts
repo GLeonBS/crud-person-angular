@@ -9,6 +9,17 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   }
 }
 
+export const nameValidation = () => {
+  const input = document.querySelector<HTMLInputElement>('#name')!
+  console.log(input);
+  
+  input.oninput = () =>{
+    input.value = input.value
+    console.log(input);
+    
+  }
+}
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
