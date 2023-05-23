@@ -25,13 +25,6 @@ function getTable(content: UsersService) {
     await table.push({codigo, nome, sexo})
   })
   let table: Array<TableItem> = []
-  // loadedUsers.pipe((map(data => {
-  //   return data.map((line) => {
-  //     let res = { codigo: line.codigo, nome: line.nome, sexo: line.sexo }
-  //     console.log(res);
-  //     return table.push(res)
-  //   })
-  // })))
   console.log(table);
   
   return table
@@ -49,7 +42,6 @@ export class TableDataSource extends DataSource<TableItem> {
 
   constructor(content: UsersService) {
     super();
-    content.load()
     this.data = getTable(content)
   }
 

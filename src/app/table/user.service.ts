@@ -57,7 +57,9 @@ export class UsersService {
     #users = new BehaviorSubject<User[]>([])
     users$ = this.#users.asObservable()
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { 
+        this.load()
+    }
     token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJOb21lVXN1YXJpbyI6IiIsIkJhbmNvIjoiU1VQTEVPTiIsIk5hbWVJZGVudGlmaWVyIjoiNSIsIlNpZCI6IjAxMGI1YjUxLWE0MGEtNDQxOC1iOTNkLWRjNzgyNzM3MWI1NCIsIlBlcm1pc3NvZXMiOiItMjAwMCwtNTAwMCIsIm5iZiI6MTY4NDg0MTI5OCwiZXhwIjoyMDAwNDYwNTU4LCJpc3MiOiJ3ZWJBcGkiLCJhdWQiOiJ3ZWJBcGkifQ.D_Mluf1HA3dKkKPMNqHRtXyJcWXjDONlLKPh6dpoqWA'
     headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token)
 
