@@ -3,7 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { UsersService } from './user.service';
+import { User, UsersService } from './user.service';
+import { __values } from 'tslib';
 
 // TODO: Replace this with your own data model type
 export interface TableItem {
@@ -11,38 +12,33 @@ export interface TableItem {
   codigo: number;
   sexo: string;
 }
-function getTable() {
+function getTable(content: UsersService) {
+  let loadedUsers = content.users$
+  let auxTable: Array<User> = []
+  loadedUsers.forEach(__values => {
+    auxTable = __values
+    console.log(__values);
+    console.log(auxTable);
+  })
+  console.log(loadedUsers);
+  auxTable.forEach((data) => {
+    let nome = data.nome
+    let codigo = data.codigo
+    let sexo = data.sexo
+    table.push({codigo, nome, sexo})
+  })
+  let table: Array<TableItem> = []
+  // loadedUsers.pipe((map(data => {
+  //   return data.map((line) => {
+  //     let res = { codigo: line.codigo, nome: line.nome, sexo: line.sexo }
+  //     console.log(res);
+  //     return table.push(res)
+  //   })
+  // })))
+  console.log(table);
   
-  let tabel = [{ codigo: 0, nome: " ", sexo: " " }]
-  return tabel
+  return table
 }
-
-let table: TableItem[] = getTable()
-// TODO: replace this with real data from your application
-const EXAMPLE_DATA: TableItem[] = table
-// [
-//   {codigo: 1, nome: 'Hydrogen', sexo: 'F'},
-//   {codigo: 2, nome: 'Helium', sexo: 'F'},
-//   {codigo: 3, nome: 'Lithium', sexo: 'F'},
-//   {codigo: 4, nome: 'Beryllium', sexo: 'F'},
-//   {codigo: 5, nome: 'Boron', sexo: 'F'},
-//   {codigo: 6, nome: 'Carbon', sexo: 'F'},
-//   {codigo: 7, nome: 'Nitrogen', sexo: 'F'},
-//   {codigo: 8, nome: 'Oxygen', sexo: 'F'},
-//   {codigo: 9, nome: 'Fluorine', sexo: 'F'},
-//   {codigo: 10, nome: 'Neon', sexo: 'F'},
-//   {codigo: 11, nome: 'Sodium', sexo: 'F'},
-//   {codigo: 12, nome: 'Magnesium', sexo: 'F'},
-//   {codigo: 13, nome: 'Aluminum', sexo: 'F'},
-//   {codigo: 14, nome: 'Silicon', sexo: 'F'},
-//   {codigo: 15, nome: 'Phosphorus', sexo: 'F'},
-//   {codigo: 16, nome: 'Sulfur', sexo: 'F'},
-//   {codigo: 17, nome: 'Chlorine', sexo: 'F'},
-//   {codigo: 18, nome: 'Argon', sexo: 'F'},
-//   {codigo: 19, nome: 'Potassium', sexo: 'F'},
-//   {codigo: 20, nome: 'Calcium', sexo: 'F'},
-// ]
-
 
 /**
  * Data source for the Table view. This class should
@@ -50,12 +46,14 @@ const EXAMPLE_DATA: TableItem[] = table
  * (including sorting, pagination, and filtering).
  */
 export class TableDataSource extends DataSource<TableItem> {
-  data: TableItem[] = EXAMPLE_DATA;
+  data: TableItem[]
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
-  constructor() {
+  constructor(content: UsersService) {
     super();
+    content.load()
+    this.data = getTable(content)
   }
 
   /**

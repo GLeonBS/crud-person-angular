@@ -9,16 +9,16 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   }
 }
 
-export const nameValidation = () => {
-  const input = document.querySelector<HTMLInputElement>('#name')!
-  console.log(input);
+// export const nameValidation = () => {
+//   const input = document.querySelector('#name')!
+//   console.log(input);
   
-  input.oninput = () =>{
-    input.value = input.value
-    console.log(input);
+//   input.oninput = () =>{
+//     input.value = input.value
+//     console.log(input);
     
-  }
-}
+//   }
+// }
 
 @Component({
   selector: 'app-form',
@@ -27,7 +27,7 @@ export const nameValidation = () => {
 })
 export class FormComponent {
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  nameFormControl = new FormControl('', [Validators.required, Validators.minLength(15)])
+  nameFormControl = new FormControl('', [Validators.required, Validators.minLength(10)])
 
   matcher = new MyErrorStateMatcher();
 }

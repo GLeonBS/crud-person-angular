@@ -10,8 +10,8 @@ import {MatButtonModule} from '@angular/material/button'
 import {MatInputModule} from '@angular/material/input'
 import {MatIconModule} from '@angular/material/icon'
 import {MatListModule} from '@angular/material/list'
-// import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import { FormComponent } from './form/form.component';
 import { TableComponent } from './table/table.component';
 import { MatTableModule } from '@angular/material/table';
@@ -23,7 +23,6 @@ import { MatSortModule } from '@angular/material/sort';
     AppComponent,
     FormComponent,
     TableComponent,
-    // HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +31,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatSidenavModule,
     MatToolbarModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MatButtonModule,
     MatIconModule,
     MatListModule,
@@ -40,7 +40,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatPaginatorModule,
     MatSortModule,
   ],
-  providers: [UsersService],
+  providers: [UsersService, HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }import { UsersService } from './table/user.service';

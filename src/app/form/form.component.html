@@ -3,7 +3,7 @@
         <mat-label>Nome Completo</mat-label>
         <input id="name" type="text" matInput [formControl]="nameFormControl" matInput [errorStateMatcher]="matcher"
             placeholder="Ex. Rhuan da Silva">
-        <mat-error *ngIf="nameFormControl.hasError('minLength') && !nameFormControl.hasError('required')">
+        <mat-error *ngIf="!nameFormControl.hasError('minLength') && !nameFormControl.hasError('required')">
             Por favor, insira no mínimo 10 letras
         </mat-error>
         <mat-error *ngIf="nameFormControl.hasError('required')">

@@ -3,6 +3,7 @@ import { MatTable } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { TableDataSource, TableItem } from './table-datasource';
+import { UsersService } from './user.service';
 
 @Component({
   selector: 'app-table',
@@ -18,8 +19,8 @@ export class TableComponent implements AfterViewInit {
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['codigo', 'nome', 'sexo'];
 
-  constructor() {
-    this.dataSource = new TableDataSource();
+  constructor(content: UsersService) {
+    this.dataSource = new TableDataSource(content);
   }
 
   ngAfterViewInit(): void {

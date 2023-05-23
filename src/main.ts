@@ -1,7 +1,7 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
-import { nameValidation } from './app/form/form.component';
+// import { nameValidation } from './app/form/form.component';
 
 
 platformBrowserDynamic().bootstrapModule(AppModule)
@@ -11,6 +11,6 @@ const app = document.querySelector('app-root')
 
 
 if(app) {
-  nameValidation()
+  // nameValidation()
 }
 

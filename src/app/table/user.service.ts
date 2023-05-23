@@ -11,46 +11,46 @@ export interface backEndResponse {
 export interface User {
     "codigo": number,
     "codIgreja": number,
-    "descricaoIgreja": String,
-    "sexo": String,
-    "matricula": String,
-    "nome": String,
-    "mae": String,
-    "pai": String,
-    "cep": String,
-    "endereco": String,
-    "numero": String,
-    "complemento": String,
-    "bairro": String,
-    "cidade": String,
-    "uf": String,
-    "telefone": String,
-    "celular": String,
-    "telefoneRecado": String,
-    "recado": String,
-    "rg": String,
-    "cpf": String,
-    "email": String,
+    "descricaoIgreja": string,
+    "sexo": string,
+    "matricula": string,
+    "nome": string,
+    "mae": string,
+    "pai": string,
+    "cep": string,
+    "endereco": string,
+    "numero": string,
+    "complemento": string,
+    "bairro": string,
+    "cidade": string,
+    "uf": string,
+    "telefone": string,
+    "celular": string,
+    "telefoneRecado": string,
+    "recado": string,
+    "rg": string,
+    "cpf": string,
+    "email": string,
     "dataNascimento": Date,
-    "tipoSanguineo": String,
+    "tipoSanguineo": string,
     "doador": Boolean,
-    "natural": String,
+    "natural": string,
     "codEscolaridade": number,
     "codEstadoCivil": number,
-    "descricaoEscolaridade": String,
-    "descricaoEstadoCivil": String,
-    "observacao": String,
-    "apelido": String,
+    "descricaoEscolaridade": string,
+    "descricaoEstadoCivil": string,
+    "observacao": string,
+    "apelido": string,
     "lat": number,
     "lng": number,
-    "skype": String,
-    "faceBook": String,
+    "skype": string,
+    "faceBook": string,
     "dataArrolamento": Date,
-    "codArrolamento": String,
-    "observacaoArrolamento": String,
+    "codArrolamento": string,
+    "observacaoArrolamento": string,
     "dataAlteracao": Date,
     "dataPrimeiroArrolamento": Date
-    "descricaoPrimeiroArrolamento": String
+    "descricaoPrimeiroArrolamento": string
 }
 @Injectable()
 export class UsersService {
@@ -58,7 +58,7 @@ export class UsersService {
     users$ = this.#users.asObservable()
 
     constructor(private http: HttpClient) { }
-    token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJOb21lVXN1YXJpbyI6IiIsIkJhbmNvIjoiU1VQTEVPTiIsIk5hbWVJZGVudGlmaWVyIjoiNSIsIlNpZCI6ImNhYzhlYWE3LWQ0NjktNDkyOS1iYjI4LWEzMzY5NjdhNDllZiIsIlBlcm1pc3NvZXMiOiItMjAwMCwtNTAwMCIsIm5iZiI6MTY4NDU5MDYzMCwiZXhwIjoyMDAwMjA5ODkwLCJpc3MiOiJ3ZWJBcGkiLCJhdWQiOiJ3ZWJBcGkifQ.6lF_XKJM4wTolhp_35-pLA-Z9FedfwMKpy_XHs3X0Ck'
+    token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJOb21lVXN1YXJpbyI6IiIsIkJhbmNvIjoiU1VQTEVPTiIsIk5hbWVJZGVudGlmaWVyIjoiNSIsIlNpZCI6IjAxMGI1YjUxLWE0MGEtNDQxOC1iOTNkLWRjNzgyNzM3MWI1NCIsIlBlcm1pc3NvZXMiOiItMjAwMCwtNTAwMCIsIm5iZiI6MTY4NDg0MTI5OCwiZXhwIjoyMDAwNDYwNTU4LCJpc3MiOiJ3ZWJBcGkiLCJhdWQiOiJ3ZWJBcGkifQ.D_Mluf1HA3dKkKPMNqHRtXyJcWXjDONlLKPh6dpoqWA'
     headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token)
 
     load() {
