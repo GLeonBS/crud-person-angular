@@ -17,15 +17,12 @@ function getTable(content: UsersService) {
   let auxTable: Array<User> = []
   loadedUsers.forEach(__values => {
     auxTable = __values
-    console.log(__values);
-    console.log(auxTable);
   })
-  console.log(loadedUsers);
-  auxTable.forEach((data) => {
-    let nome = data.nome
-    let codigo = data.codigo
-    let sexo = data.sexo
-    table.push({codigo, nome, sexo})
+  auxTable.forEach(async (data) => {
+    let nome = await data.nome
+    let codigo = await data.codigo
+    let sexo = await data.sexo
+    await table.push({codigo, nome, sexo})
   })
   let table: Array<TableItem> = []
   // loadedUsers.pipe((map(data => {
