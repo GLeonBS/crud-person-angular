@@ -19,10 +19,10 @@ function getTable(content: UsersService) {
     auxTable = __values
   })
   auxTable.forEach(async (data) => {
-    let nome = await data.nome
-    let codigo = await data.codigo
-    let sexo = await data.sexo
-    await table.push({ codigo, nome, sexo })
+    // let nome = await data.nome
+    // let codigo = await data.codigo
+    // let sexo = await data.sexo
+    // await table.push({ codigo, nome, sexo })
   })
   let table: Array<TableItem> = []
   console.log(table);

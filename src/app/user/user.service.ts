@@ -9,7 +9,10 @@ export interface backEndResponse {
 }
 
 export interface User {
-
+    "name": String,
+    "cpf": String,
+    "birthDate": Date,
+    "contacts": []
 }
 @Injectable()
 export class UsersService {
