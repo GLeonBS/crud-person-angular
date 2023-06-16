@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { User, UsersService } from './user.service';
+import { User, UsersService } from '../user/user.service';
 import { __values } from 'tslib';
 
 // TODO: Replace this with your own data model type
@@ -22,11 +22,11 @@ function getTable(content: UsersService) {
     let nome = await data.nome
     let codigo = await data.codigo
     let sexo = await data.sexo
-    await table.push({codigo, nome, sexo})
+    await table.push({ codigo, nome, sexo })
   })
   let table: Array<TableItem> = []
   console.log(table);
-  
+
   return table
 }
 

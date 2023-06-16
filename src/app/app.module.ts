@@ -3,15 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {ReactiveFormsModule} from '@angular/forms'
-import {MatSidenavModule} from '@angular/material/sidenav'
-import {MatToolbarModule} from '@angular/material/toolbar'
-import {MatButtonModule} from '@angular/material/button'
-import {MatInputModule} from '@angular/material/input'
-import {MatIconModule} from '@angular/material/icon'
-import {MatListModule} from '@angular/material/list'
+import { ReactiveFormsModule } from '@angular/forms'
+import { MatSidenavModule } from '@angular/material/sidenav'
+import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatButtonModule } from '@angular/material/button'
+import { MatInputModule } from '@angular/material/input'
+import { MatIconModule } from '@angular/material/icon'
+import { MatListModule } from '@angular/material/list'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormComponent } from './form/form.component';
 import { TableComponent } from './table/table.component';
 import { MatTableModule } from '@angular/material/table';
@@ -38,10 +38,10 @@ import { MatSortModule } from '@angular/material/sort';
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule,
+    MatSortModule
   ],
-  providers: [UsersService, HttpClientModule],
+  providers: [{ provide: UsersService, deps: [HttpClient] }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }import { UsersService } from './table/user.service';
+export class AppModule { } import { UsersService } from './user/user.service';
 
