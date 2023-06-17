@@ -5,36 +5,12 @@ import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import { User, UsersService } from '../user/user.service';
 import { __values } from 'tslib';
-
-// TODO: Replace this with your own data model type
 export interface TableItem {
-  nome: string;
-  codigo: number;
-  sexo: string;
+  name: String,
+  cpf: String,
+  birthDate: Date,
+  contacts: []
 }
-function getTable(content: UsersService) {
-  let loadedUsers = content.users$
-  let auxTable: Array<User> = []
-  loadedUsers.forEach(__values => {
-    auxTable = __values
-  })
-  auxTable.forEach(async (data) => {
-    // let nome = await data.nome
-    // let codigo = await data.codigo
-    // let sexo = await data.sexo
-    // await table.push({ codigo, nome, sexo })
-  })
-  let table: Array<TableItem> = []
-  console.log(table);
-
-  return table
-}
-
-/**
- * Data source for the Table view. This class should
- * encapsulate all logic for fetching and manipulating the displayed data
- * (including sorting, pagination, and filtering).
- */
 export class TableDataSource extends DataSource<TableItem> {
   data: TableItem[]
   paginator: MatPaginator | undefined;
@@ -42,7 +18,7 @@ export class TableDataSource extends DataSource<TableItem> {
 
   constructor(content: UsersService) {
     super();
-    this.data = getTable(content)
+    this.data = []
   }
 
   /**
@@ -94,8 +70,8 @@ export class TableDataSource extends DataSource<TableItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
-        case 'nome': return compare(a.nome, b.nome, isAsc);
-        case 'codigo': return compare(+a.codigo, +b.codigo, isAsc);
+        case 'nome': return compare(a.name, b.name, isAsc);
+        case 'cpf': return compare(+a.cpf, +b.cpf, isAsc);
         default: return 0;
       }
     });
@@ -103,6 +79,6 @@ export class TableDataSource extends DataSource<TableItem> {
 }
 
 /** Simple sort comparator for example ID/Name columns (for client-side sorting). */
-function compare(a: string | number, b: string | number, isAsc: boolean): number {
+function compare(a: String | number, b: String | number, isAsc: boolean): number {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }

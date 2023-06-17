@@ -20,7 +20,6 @@ export class UsersService {
     users$ = this.#users.asObservable()
 
     constructor(private http: HttpClient) {
-        this.load()
     }
 
     load() {
@@ -31,7 +30,7 @@ export class UsersService {
 
     get() {
         return this.http.get<backEndResponse>(
-            `http://localhost:3000/api/person`
+            `http://localhost:8080/api/person`
         ).pipe(
             map(response => response.registros)
         )
